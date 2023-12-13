@@ -69,3 +69,106 @@ public class Order {
 
 .Capture d'écran des tests
 image::https://i.imgur.com/72lqnmV.png[]
+
+== TP3
+
+.Objectif initial
+Le but de la feature est de pouvoir s'assurer qu'un fichier PGN (format pour stocker une partie d'échecs) respecte au moins 4 contraintes :
+
+- Il faut au moins 1 partie valide dans le fichier
+- Chaque partie doit avoir un joueur avec les pièces blanches (balise [White ""] non vide)
+- Chaque partie doit avoir un joueur avec les pièces noires (balise [Blacks ""] non vide)
+- La partie doit avoir un résultat final (1-0 ou 0-1 ou 1/2-1/2)
+
+.Contenu du fichier pgnChecker
+[source,gherkin]
+----
+#------------------------------
+# Reviewing a PGN file
+# Nolan Jacquemont - 2023
+#------------------------------
+# language: en
+Feature: PGN Checker
+  I want to check that pgn file (file used to store chess games) is complete, with white and black players name and a result
+
+  Scenario: pgn file contains at least one valid game
+    Given A PGN file to review at "file_error.pgn"
+    When I load PGN file data
+    Then The pgn file should contain at least one valid game
+
+  Scenario: Each game in a pgn file must contain a white player
+    Given A PGN file to review at "file_error.pgn"
+    When I load PGN file data
+    Then Each game in a pgn file should contain a white player
+
+  Scenario: Each game in a pgn file must contain a black player
+    Given A PGN file to review at "file_error.pgn"
+    When I load PGN file data
+    Then Each game in a pgn file should contain a black player
+
+  Scenario: Each game in a pgn file must contain a final result
+    Given A PGN file to review at "file_error.pgn"
+    When I load PGN file data
+    Then Each game in a pgn file should contain a final result
+----
+
+.Contenu des implémentations test (fichier PgnCheckerSteps)
+[source,java]
+----
+public class PgnCheckerSteps {
+
+    private PgnChecker pgnChecker;
+
+    @Given("A PGN file to review at {string}")
+    public void aPGNFileToReviewAt(String path) {
+        this.pgnChecker = new PgnChecker(path);
+    }
+
+    @When("I load PGN file data")
+    public void iLoadPGNFileData() {
+        this.pgnChecker.loadData();
+    }
+
+    @Then("The pgn file should contain at least one valid game")
+    public void thePgnFileShouldContainAtLeastOneValidGame() {
+        Assertions.assertDoesNotThrow(() -> {
+            System.out.println("Testing game numbers");
+            this.pgnChecker.checkGameNumber();
+        });
+        System.out.println("OK");
+    }
+
+    @Then("Each game in a pgn file should contain a white player")
+    public void eachGameInAPgnFileMustContainAWhitePlayer() {
+        Assertions.assertDoesNotThrow(() -> {
+            System.out.println("Testing white players");
+            this.pgnChecker.checkWhitePlayers();
+        });
+        System.out.println("OK");
+    }
+
+    @Then("Each game in a pgn file should contain a black player")
+    public void eachGameInAPgnFileMustContainABlackPlayer() {
+        Assertions.assertDoesNotThrow(() -> {
+            System.out.println("Testing black players");
+            this.pgnChecker.checkBlackPlayers();
+        });
+        System.out.println("OK");
+    }
+
+    @Then("Each game in a pgn file should contain a final result")
+    public void eachGameInAPgnFileMustContainAResult() {
+        Assertions.assertDoesNotThrow(() -> {
+            System.out.println("Testing game results");
+            this.pgnChecker.checkGameResults();
+        });
+        System.out.println("OK");
+    }
+}
+----
+
+.Capture d'écran des tests (réussite)
+image::https://i.imgur.com/niDsJ2Z.png[]
+
+.Capture d'écran des tests (échec)
+image::https://i.imgur.com/gOgDBFN.png[]
