@@ -3,7 +3,7 @@ package fr.nolan.app;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import org.junit.jupiter.api.Assertions;
+import org.junit.Assert;
 
 public class PgnCheckerSteps {
 
@@ -21,37 +21,45 @@ public class PgnCheckerSteps {
 
     @Then("The pgn file should contain at least one valid game")
     public void thePgnFileShouldContainAtLeastOneValidGame() {
-        Assertions.assertDoesNotThrow(() -> {
+        try {
             System.out.println("Testing game numbers");
             this.pgnChecker.checkGameNumber();
-        });
+        } catch (RuntimeException e) {
+            Assert.fail(e.getMessage());
+        }
         System.out.println("OK");
     }
 
     @Then("Each game in a pgn file should contain a white player")
     public void eachGameInAPgnFileMustContainAWhitePlayer() {
-        Assertions.assertDoesNotThrow(() -> {
+        try {
             System.out.println("Testing white players");
             this.pgnChecker.checkWhitePlayers();
-        });
+        } catch (RuntimeException e) {
+            Assert.fail(e.getMessage());
+        }
         System.out.println("OK");
     }
 
     @Then("Each game in a pgn file should contain a black player")
     public void eachGameInAPgnFileMustContainABlackPlayer() {
-        Assertions.assertDoesNotThrow(() -> {
+        try {
             System.out.println("Testing black players");
             this.pgnChecker.checkBlackPlayers();
-        });
+        } catch (RuntimeException e) {
+            Assert.fail(e.getMessage());
+        }
         System.out.println("OK");
     }
 
     @Then("Each game in a pgn file should contain a final result")
     public void eachGameInAPgnFileMustContainAResult() {
-        Assertions.assertDoesNotThrow(() -> {
+        try {
             System.out.println("Testing game results");
             this.pgnChecker.checkGameResults();
-        });
+        } catch (RuntimeException e) {
+            Assert.fail(e.getMessage());
+        }
         System.out.println("OK");
     }
 }
