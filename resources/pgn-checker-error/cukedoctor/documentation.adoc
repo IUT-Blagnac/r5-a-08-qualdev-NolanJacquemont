@@ -1,0 +1,126 @@
+:toc: right
+:backend: html5
+:doctitle: Living Documentation
+:doctype: book
+:icons: font
+:!numbered:
+:sectanchors:
+:sectlink:
+:docinfo:
+:source-highlighter: highlightjs
+:toclevels: 3
+:hardbreaks:
+:chapter-label: Chapter
+:version-label: Version
+
+= *Living Documentation*
+
+== *Summary*
+[cols="12*^m", options="header,footer"]
+|===
+3+|Scenarios 7+|Steps 2+|Features: 1
+
+|[green]#*Passed*#
+|[red]#*Failed*#
+|Total
+|[green]#*Passed*#
+|[red]#*Failed*#
+|[purple]#*Skipped*#
+|[maroon]#*Pending*#
+|[yellow]#*Undefined*#
+|[blue]#*Missing*#
+|Total
+|Duration
+|Status
+
+12+^|*<<PGN-Checker>>*
+|1
+|3
+|4
+|9
+|3
+|0
+|0
+|0
+|0
+|12
+|109ms
+|[red]#*failed*#
+12+^|*Totals*
+|1|3|4|9|3|0|0|0|0|12 2+|109ms
+|===
+
+== *Features*
+
+[[PGN-Checker, PGN Checker]]
+=== *PGN Checker*
+
+ifndef::backend-pdf[]
+minmax::PGN-Checker[]
+endif::[]
+****
+I want to check that pgn file (file used to store chess games) is complete, with white and black players name and a result
+****
+
+==== Scenario: pgn file contains at least one valid game
+
+==========
+Given ::
+A PGN file to review at "file_error.pgn" icon:thumbs-up[role="green",title="Passed"] [small right]#(072ms)#
+When ::
+I load PGN file data icon:thumbs-up[role="green",title="Passed"] [small right]#(019ms)#
+Then ::
+The pgn file should contain at least one valid game icon:thumbs-up[role="green",title="Passed"] [small right]#(000ms)#
+==========
+
+==== Scenario: Each game in a pgn file must contain a white player icon:thumbs-down[role="red",title="Failed"]
+
+==========
+Given ::
+A PGN file to review at "file_error.pgn" icon:thumbs-up[role="green",title="Passed"] [small right]#(000ms)#
+When ::
+I load PGN file data icon:thumbs-up[role="green",title="Passed"] [small right]#(001ms)#
+Then ::
+Each game in a pgn file should contain a white player icon:thumbs-down[role="red",title="Failed"] [small right]#(008ms)#
+
+IMPORTANT: java.lang.AssertionError: Error: no white player in game 327a7903-4385-429e-b74b-d4e8e6b6c62a
+	at org.junit.Assert.fail(Assert.java:88)
+	at fr.nolan.app.PgnCheckerSteps.eachGameInAPgnFileMustContainAWhitePlayer(PgnCheckerSteps.java:39)
+	at ✽.Each game in a pgn file should contain a white player(classpath:features/pgnChecker.feature:19)
+
+==========
+
+==== Scenario: Each game in a pgn file must contain a black player icon:thumbs-down[role="red",title="Failed"]
+
+==========
+Given ::
+A PGN file to review at "file_error.pgn" icon:thumbs-up[role="green",title="Passed"] [small right]#(000ms)#
+When ::
+I load PGN file data icon:thumbs-up[role="green",title="Passed"] [small right]#(001ms)#
+Then ::
+Each game in a pgn file should contain a black player icon:thumbs-down[role="red",title="Failed"] [small right]#(001ms)#
+
+IMPORTANT: java.lang.AssertionError: Error: no black player in game 5c02f931-5577-4d05-aeb4-31b123385d49
+	at org.junit.Assert.fail(Assert.java:88)
+	at fr.nolan.app.PgnCheckerSteps.eachGameInAPgnFileMustContainABlackPlayer(PgnCheckerSteps.java:50)
+	at ✽.Each game in a pgn file should contain a black player(classpath:features/pgnChecker.feature:25)
+
+==========
+
+==== Scenario: Each game in a pgn file must contain a final result icon:thumbs-down[role="red",title="Failed"]
+
+==========
+Given ::
+A PGN file to review at "file_error.pgn" icon:thumbs-up[role="green",title="Passed"] [small right]#(001ms)#
+When ::
+I load PGN file data icon:thumbs-up[role="green",title="Passed"] [small right]#(001ms)#
+Then ::
+Each game in a pgn file should contain a final result icon:thumbs-down[role="red",title="Failed"] [small right]#(001ms)#
+
+IMPORTANT: java.lang.AssertionError: Error: no final result in game 7b9380bf-380d-4e77-bdb7-46a92865ad3d
+	at org.junit.Assert.fail(Assert.java:88)
+	at fr.nolan.app.PgnCheckerSteps.eachGameInAPgnFileMustContainAResult(PgnCheckerSteps.java:61)
+	at ✽.Each game in a pgn file should contain a final result(classpath:features/pgnChecker.feature:31)
+
+==========
+

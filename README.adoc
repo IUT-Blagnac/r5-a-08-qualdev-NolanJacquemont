@@ -1,3 +1,4 @@
+[![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-718a45dd9cf7e7f842a935f5ebbe5719a5e09af4491e668f4dbf3b35d5cca122.svg)](https://classroom.github.com/online_ide?assignment_repo_id=13208648&assignment_repo_type=AssignmentRepo)
 = R5.A.08 -- Dépôt pour les TPs
 :icons: font
 :MoSCoW: https://fr.wikipedia.org/wiki/M%C3%A9thode_MoSCoW[MoSCoW]
@@ -6,17 +7,185 @@ Ce dépôt concerne les rendus de mailto:A_changer@etu.univ-tlse2.fr[Jonh Doe].
 
 == TP1
 
-.Exemple de code
+.Contenu du fichier is_it_friday_yet.feature
+[source,gherkin]
+----
+Feature: Is it Friday?
+
+  Scenario Outline: Is it Friday?
+    Given today is "<day>"
+    When I ask whether it's Friday yet
+    Then I should be told "<answer>"
+    Examples:
+      | day            | answer |
+      | Friday         | TGIF   |
+      | Sunday         | No     |
+      | anything else! | No     |
+----
+
+.Capture d'écran des tests
+image::https://i.imgur.com/UCo7A4a.png[]
+
+== TP2
+
+.Contenu du fichier Order.java
 [source,java]
----
-@Given("today is Sunday")
-public void today_is_sunday() {
-    // Write code here that turns the phrase above into concrete actions
-    throw new io.cucumber.java.PendingException();
+----
+public class Order {
+
+    private String owner;
+    private String target;
+    private String message;
+
+    public void declareOwner(String romeo) {
+        this.owner = romeo;
+    }
+
+    public void declareTarget(String juliette) {
+        this.target = juliette;
+    }
+
+    public List<String> getCocktails() {
+        return new ArrayList<>();
+    }
+
+    public void addMessage(String message) {
+        this.message = message;
+    }
+
+    public String getMessage() {
+        return "From " + this.owner + " to " + this.target + ": " + this.message;
+    }
+
+    public String getOwner() {
+        return owner;
+    }
+
+    public String getTarget() {
+        return target;
+    }
 }
----
+----
 
-.Exemple d'image insérée en asciidoc
-image::artifacts-r303.svg[width=80%]
+.Capture d'écran des tests
+image::https://i.imgur.com/72lqnmV.png[]
 
-== TP2...
+== TP3
+
+.Objectif initial
+Le but de la feature est de pouvoir s'assurer qu'un fichier PGN (format pour stocker une partie d'échecs) respecte au moins 4 contraintes :
+
+- Il faut au moins 1 partie valide dans le fichier
+- Chaque partie doit avoir un joueur avec les pièces blanches (balise [White ""] non vide)
+- Chaque partie doit avoir un joueur avec les pièces noires (balise [Blacks ""] non vide)
+- La partie doit avoir un résultat final (1-0 ou 0-1 ou 1/2-1/2)
+
+.Contenu du fichier pgnChecker
+[source,gherkin]
+----
+#------------------------------
+# Reviewing a PGN file
+# Nolan Jacquemont - 2023
+#------------------------------
+# language: en
+Feature: PGN Checker
+  I want to check that pgn file (file used to store chess games) is complete, with white and black players name and a result
+
+  Scenario: pgn file contains at least one valid game
+    Given A PGN file to review at "file_error.pgn"
+    When I load PGN file data
+    Then The pgn file should contain at least one valid game
+
+  Scenario: Each game in a pgn file must contain a white player
+    Given A PGN file to review at "file_error.pgn"
+    When I load PGN file data
+    Then Each game in a pgn file should contain a white player
+
+  Scenario: Each game in a pgn file must contain a black player
+    Given A PGN file to review at "file_error.pgn"
+    When I load PGN file data
+    Then Each game in a pgn file should contain a black player
+
+  Scenario: Each game in a pgn file must contain a final result
+    Given A PGN file to review at "file_error.pgn"
+    When I load PGN file data
+    Then Each game in a pgn file should contain a final result
+----
+
+.Contenu des implémentations test (fichier PgnCheckerSteps)
+[source,java]
+----
+public class PgnCheckerSteps {
+
+    private PgnChecker pgnChecker;
+
+    @Given("A PGN file to review at {string}")
+    public void aPGNFileToReviewAt(String path) {
+        this.pgnChecker = new PgnChecker(path);
+    }
+
+    @When("I load PGN file data")
+    public void iLoadPGNFileData() {
+        this.pgnChecker.loadData();
+    }
+
+    @Then("The pgn file should contain at least one valid game")
+    public void thePgnFileShouldContainAtLeastOneValidGame() {
+        Assertions.assertDoesNotThrow(() -> {
+            System.out.println("Testing game numbers");
+            this.pgnChecker.checkGameNumber();
+        });
+        System.out.println("OK");
+    }
+
+    @Then("Each game in a pgn file should contain a white player")
+    public void eachGameInAPgnFileMustContainAWhitePlayer() {
+        Assertions.assertDoesNotThrow(() -> {
+            System.out.println("Testing white players");
+            this.pgnChecker.checkWhitePlayers();
+        });
+        System.out.println("OK");
+    }
+
+    @Then("Each game in a pgn file should contain a black player")
+    public void eachGameInAPgnFileMustContainABlackPlayer() {
+        Assertions.assertDoesNotThrow(() -> {
+            System.out.println("Testing black players");
+            this.pgnChecker.checkBlackPlayers();
+        });
+        System.out.println("OK");
+    }
+
+    @Then("Each game in a pgn file should contain a final result")
+    public void eachGameInAPgnFileMustContainAResult() {
+        Assertions.assertDoesNotThrow(() -> {
+            System.out.println("Testing game results");
+            this.pgnChecker.checkGameResults();
+        });
+        System.out.println("OK");
+    }
+}
+----
+
+.Capture d'écran des tests (réussite)
+image::https://i.imgur.com/niDsJ2Z.png[]
+
+.Capture d'écran des tests (échec)
+image::https://i.imgur.com/gOgDBFN.png[]
+
+== TP4
+
+.Cukedoctor pour le projet helloCucumber
+link:https://htmlpreview.github.io/?https://github.com/IUT-Blagnac/r5-a-08-qualdev-NolanJacquemont/blob/main/resources/hellocucumber/cukedoctor/documentation.html[lien vers la page HTML Cukedoctor du projet helloCucumber]
+
+.Cukedoctor pour le projet PgnChecker (réussite)
+link:https://htmlpreview.github.io/?https://github.com/IUT-Blagnac/r5-a-08-qualdev-NolanJacquemont/blob/main/resources/pgn-checker-sucess/cukedoctor/documentation.html[lien vers la page HTML Cukedoctor du projet PgnChecker (réussite)]
+
+.Serenity pour le projet PgnChecker (réussite)
+link:https://htmlpreview.github.io/?https://github.com/IUT-Blagnac/r5-a-08-qualdev-NolanJacquemont/blob/main/resources/pgn-checker-sucess/serenity/site/serenity/index.html[lien vers la page HTML Serenity du projet PgnChecker (réussite)]
+
+.Cukedoctor pour le projet PgnChecker (échec)
+link:https://htmlpreview.github.io/?https://github.com/IUT-Blagnac/r5-a-08-qualdev-NolanJacquemont/blob/main/resources/pgn-checker-error/cukedoctor/documentation.html[lien vers la page HTML Cukedoctor du projet PgnChecker (échec)]
+
+.Serenity pour le projet PgnChecker (échec)
+link:https://htmlpreview.github.io/?https://github.com/IUT-Blagnac/r5-a-08-qualdev-NolanJacquemont/blob/main/resources/pgn-checker-error/serenity/site/serenity/index.html[lien vers la page HTML Serenity du projet PgnChecker (échec)]
