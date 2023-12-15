@@ -1,0 +1,108 @@
+:toc: right
+:backend: html5
+:doctitle: Living Documentation
+:doctype: book
+:icons: font
+:!numbered:
+:sectanchors:
+:sectlink:
+:docinfo:
+:source-highlighter: highlightjs
+:toclevels: 3
+:hardbreaks:
+:chapter-label: Chapter
+:version-label: Version
+
+= *Living Documentation*
+
+== *Summary*
+[cols="12*^m", options="header,footer"]
+|===
+3+|Scenarios 7+|Steps 2+|Features: 1
+
+|[green]#*Passed*#
+|[red]#*Failed*#
+|Total
+|[green]#*Passed*#
+|[red]#*Failed*#
+|[purple]#*Skipped*#
+|[maroon]#*Pending*#
+|[yellow]#*Undefined*#
+|[blue]#*Missing*#
+|Total
+|Duration
+|Status
+
+12+^|*<<PGN-Checker>>*
+|4
+|0
+|4
+|12
+|0
+|0
+|0
+|0
+|0
+|12
+|097ms
+|[green]#*passed*#
+12+^|*Totals*
+|4|0|4|12|0|0|0|0|0|12 2+|097ms
+|===
+
+== *Features*
+
+[[PGN-Checker, PGN Checker]]
+=== *PGN Checker*
+
+ifndef::backend-pdf[]
+minmax::PGN-Checker[]
+endif::[]
+****
+I want to check that pgn file (file used to store chess games) is complete, with white and black players name and a result
+****
+
+==== Scenario: pgn file contains at least one valid game
+
+==========
+Given ::
+A PGN file to review at "file.pgn" icon:thumbs-up[role="green",title="Passed"] [small right]#(071ms)#
+When ::
+I load PGN file data icon:thumbs-up[role="green",title="Passed"] [small right]#(016ms)#
+Then ::
+The pgn file should contain at least one valid game icon:thumbs-up[role="green",title="Passed"] [small right]#(000ms)#
+==========
+
+==== Scenario: Each game in a pgn file must contain a white player
+
+==========
+Given ::
+A PGN file to review at "file.pgn" icon:thumbs-up[role="green",title="Passed"] [small right]#(001ms)#
+When ::
+I load PGN file data icon:thumbs-up[role="green",title="Passed"] [small right]#(001ms)#
+Then ::
+Each game in a pgn file should contain a white player icon:thumbs-up[role="green",title="Passed"] [small right]#(001ms)#
+==========
+
+==== Scenario: Each game in a pgn file must contain a black player
+
+==========
+Given ::
+A PGN file to review at "file.pgn" icon:thumbs-up[role="green",title="Passed"] [small right]#(001ms)#
+When ::
+I load PGN file data icon:thumbs-up[role="green",title="Passed"] [small right]#(000ms)#
+Then ::
+Each game in a pgn file should contain a black player icon:thumbs-up[role="green",title="Passed"] [small right]#(000ms)#
+==========
+
+==== Scenario: Each game in a pgn file must contain a final result
+
+==========
+Given ::
+A PGN file to review at "file.pgn" icon:thumbs-up[role="green",title="Passed"] [small right]#(001ms)#
+When ::
+I load PGN file data icon:thumbs-up[role="green",title="Passed"] [small right]#(000ms)#
+Then ::
+Each game in a pgn file should contain a final result icon:thumbs-up[role="green",title="Passed"] [small right]#(000ms)#
+==========
+

@@ -175,8 +175,17 @@ image::https://i.imgur.com/gOgDBFN.png[]
 
 == TP4
 
+.Cukedoctor pour le projet helloCucumber
+link:https://htmlpreview.github.io/?https://github.com/IUT-Blagnac/r5-a-08-qualdev-NolanJacquemont/blob/main/resources/hellocucumber/cukedoctor/documentation.html[lien vers la page HTML Cukedoctor du projet helloCucumber]
+
+.Cukedoctor pour le projet PgnChecker (réussite)
+link:https://htmlpreview.github.io/?https://github.com/IUT-Blagnac/r5-a-08-qualdev-NolanJacquemont/blob/main/resources/pgn-checker-sucess/cukedoctor/documentation.html[lien vers la page HTML Cukedoctor du projet PgnChecker (réussite)]
+
 .Serenity pour le projet PgnChecker (réussite)
-link:https://htmlpreview.github.io/?https://github.com/IUT-Blagnac/r5-a-08-qualdev-NolanJacquemont/tree/main/resources/pgn-checker-sucess/serenity/site/index.html[lien vers la page HTML Serenity du projet PgnChecker (réussite)]
+link:https://htmlpreview.github.io/?https://github.com/IUT-Blagnac/r5-a-08-qualdev-NolanJacquemont/blob/main/resources/pgn-checker-sucess/serenity/site/serenity/index.html[lien vers la page HTML Serenity du projet PgnChecker (réussite)]
+
+.Cukedoctor pour le projet PgnChecker (échec)
+link:https://htmlpreview.github.io/?https://github.com/IUT-Blagnac/r5-a-08-qualdev-NolanJacquemont/blob/main/resources/pgn-checker-sucess/cukedoctor/documentation.html[lien vers la page HTML Cukedoctor du projet PgnChecker (échec)]
 
 .Serenity pour le projet PgnChecker (échec)
-link:https://htmlpreview.github.io/?https://github.com/IUT-Blagnac/r5-a-08-qualdev-NolanJacquemont/tree/main/resources/pgn-checker-error/serenity/site/index.html[lien vers la page HTML Serenity du projet PgnChecker (échec)]
+link:https://htmlpreview.github.io/?https://github.com/IUT-Blagnac/r5-a-08-qualdev-NolanJacquemont/blob/main/resources/pgn-checker-error/serenity/site/serenity/index.html[lien vers la page HTML Serenity du projet PgnChecker (échec)]
