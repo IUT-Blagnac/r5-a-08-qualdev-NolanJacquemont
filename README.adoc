@@ -172,3 +172,11 @@ image::https://i.imgur.com/niDsJ2Z.png[]
 
 .Capture d'écran des tests (échec)
 image::https://i.imgur.com/gOgDBFN.png[]
+
+== TP4
+
+.Serenity pour le projet PgnChecker (réussite)
+link:https://htmlpreview.github.io/?https://github.com/IUT-Blagnac/r5-a-08-qualdev-NolanJacquemont/tree/main/resources/pgn-checker-sucess/serenity/site/index.html[lien vers la page HTML Serenity du projet PgnChecker (réussite)]
+
+.Serenity pour le projet PgnChecker (échec)
+link:https://htmlpreview.github.io/?https://github.com/IUT-Blagnac/r5-a-08-qualdev-NolanJacquemont/tree/main/resources/pgn-checker-error/serenity/site/index.html[lien vers la page HTML Serenity du projet PgnChecker (échec)]

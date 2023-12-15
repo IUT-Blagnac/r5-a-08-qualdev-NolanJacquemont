@@ -1,15 +1,10 @@
 package fr.nolan.app;
 
 import com.github.bhlangonijr.chesslib.game.Game;
-import com.github.bhlangonijr.chesslib.game.GameResult;
-import com.github.bhlangonijr.chesslib.game.Player;
 import com.github.bhlangonijr.chesslib.pgn.PgnHolder;
-import com.github.bhlangonijr.chesslib.pgn.PgnIterator;
-import com.github.bhlangonijr.chesslib.pgn.PgnProperty;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public class PgnChecker {
 

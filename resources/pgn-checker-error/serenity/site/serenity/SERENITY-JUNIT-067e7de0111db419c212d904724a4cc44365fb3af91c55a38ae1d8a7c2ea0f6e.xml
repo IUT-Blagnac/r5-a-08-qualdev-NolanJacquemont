@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><testsuite errors="0" failures="3" name="PGN Checker" skipped="0" tests="4" time="0.29" timestamp="2023-12-15 06:57:13"><testcase name="pgn file contains at least one valid game"/><testcase name="Each game in a pgn file must contain a white player"><failure message="Error: no white player in game 2b6d6deb-07da-47d0-8d9a-5d0411c4eff8" type="java.lang.AssertionError">Error: no white player in game 2b6d6deb-07da-47d0-8d9a-5d0411c4eff8</failure><system-err>Error: no white player in game 2b6d6deb-07da-47d0-8d9a-5d0411c4eff8&#13;
+fr.nolan.app.PgnCheckerSteps.eachGameInAPgnFileMustContainAWhitePlayer(PgnCheckerSteps.java:39)&#13;
+✽.Each game in a pgn file should contain a white player(classpath:features/pgnChecker.feature:19)&#13;
+</system-err></testcase><testcase name="Each game in a pgn file must contain a black player"><failure message="Error: no black player in game 611969fc-62cd-4c83-9e68-1cfa67757665" type="java.lang.AssertionError">Error: no black player in game 611969fc-62cd-4c83-9e68-1cfa67757665</failure><system-err>Error: no black player in game 611969fc-62cd-4c83-9e68-1cfa67757665&#13;
+fr.nolan.app.PgnCheckerSteps.eachGameInAPgnFileMustContainABlackPlayer(PgnCheckerSteps.java:50)&#13;
+✽.Each game in a pgn file should contain a black player(classpath:features/pgnChecker.feature:25)&#13;
+</system-err></testcase><testcase name="Each game in a pgn file must contain a final result"><failure message="Error: no final result in game 1dcd0ab6-d1f3-4dd6-8252-b73f3f77463a" type="java.lang.AssertionError">Error: no final result in game 1dcd0ab6-d1f3-4dd6-8252-b73f3f77463a</failure><system-err>Error: no final result in game 1dcd0ab6-d1f3-4dd6-8252-b73f3f77463a&#13;
+fr.nolan.app.PgnCheckerSteps.eachGameInAPgnFileMustContainAResult(PgnCheckerSteps.java:61)&#13;
+✽.Each game in a pgn file should contain a final result(classpath:features/pgnChecker.feature:31)&#13;
+</system-err></testcase></testsuite>
